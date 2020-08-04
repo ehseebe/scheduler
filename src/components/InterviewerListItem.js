@@ -1,8 +1,14 @@
 import React from "react";
+import "components/InterviewerListItem.scss";
+const classNames = require('classnames');
 
-const InterviewerListItem = () => {
+const InterviewerListItem = props => {
+  let interviewerListClass = classNames("interviewers__item", {
+    "interviewers__item--selected": props.selected
+  })
+
   return (
-    <li className="interviewers__item">
+    <li className={interviewerListClass} onClick={() => console.log("clicked!")}>
       <img
         className="interviewers__item-image"
         src="https://i.imgur.com/LpaY82x.png"
