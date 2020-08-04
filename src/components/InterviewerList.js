@@ -10,18 +10,19 @@ import "components/InterviewerList.scss";
 //   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" },
 // ];
 
-const InterviewerList = props => {
-
-  const loopInterviewerList = props.interviewers.map(interviewer => {
+const InterviewerList = (props) => {
+  const interviewers = props.interviewers.map((interviewer) => {
     return (
-      <section className="interviewers">
-        <h4 className="interviewers__header text--light">
-          {interviewer.name}</h4>
-        <ul className="interviewers__list"></ul>
-      </section>
+      <InterviewerListItem
+        key={interviewer.id}
+        name={interviewer.name}
+        avatar={interviewer.avatar}
+        selected={interviewer.id === props.interviewer}
+        setInterviewer={(event) => props.setInterviewer(interviewer.id)}
+      />
     );
-  })
-  return loopInterviewerList;  
+  });
+  return interviewers;
 };
 
 export default InterviewerList;
