@@ -1,7 +1,7 @@
 import React from "react";
 
 import { storiesOf } from "@storybook/react";
-import { action, configureActions } from "@storybook/addon-actions";
+import { action } from "@storybook/addon-actions";
 
 import "index.scss";
 import "components/Appointment/styles.scss"
