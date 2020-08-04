@@ -161,11 +161,11 @@ storiesOf("InterviewerList", module)
     onClose={action("onClose")}
     />)
   .add("Edit", () => <Form
-    name="Alyssa"
+    name=""
     interviewers={interviewers}
     interviewer={2}
     onSave={action("onSave")}
-    onCancel={action("onSave")}
+    onCancel={action("onCancel")}
     />)
   .add("Create", () => <Form
     interviewers={interviewers}
