@@ -9,18 +9,18 @@ const classNames = require('classnames');
 // };
 
 const InterviewerListItem = props => {
-  let interviewerListClass = classNames("interviewers__item", {
+  let interviewerClass = classNames("interviewers__item", {
     "interviewers__item--selected": props.selected
   })
 
   return (
-    <li className={interviewerListClass} onClick={() => props.setInterviewer(props.name)}>
+    <li className={interviewerClass} onClick={props.setInterviewer}>
       <img
         className="interviewers__item-image"
-        src="https://i.imgur.com/LpaY82x.png"
-        alt="Sylvia Palmer"
+        src={props.avatar}
+        alt={props.name}
       />
-      Sylvia Palmer
+      {props.selected && props.name}
     </li>
   );
 };
