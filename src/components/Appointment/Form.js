@@ -10,7 +10,6 @@ const Form = props => {
   const reset = () => {
       setName('');
       setInterviewer(null);
-      // props.onSave();
   }
 
   const cancel = () => {
@@ -18,9 +17,6 @@ const Form = props => {
     props.onCancel();
   }
 
-  // const myChangeHandler = (event) => {
-  //   this.setName({name: event.target.value})
-  // }
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -28,16 +24,17 @@ const Form = props => {
         <form autoComplete="off" onSubmit={event => event.preventDefault()}>
           <input
             className="appointment__create-input text--semi-bold"
-            name={name}
+            name="name"
             type="text"
+            value={name}
             placeholder="Enter Student Name"
-            onChange={props.setName}
+            onChange={(event) => setName(event.target.value)}
           />
         </form>
         <InterviewerList
           interviewers={props.interviewers}
-          value={interviewer}
-          onChange={props.setInterviewer}
+          interviewer={interviewer}
+          setInterviewer={setInterviewer}
         />
       </section>
       <section className="appointment__card-right">
