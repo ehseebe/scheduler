@@ -1,8 +1,12 @@
-import React from 'react';
+export function getAppointmentsForDay(state, name) {
+  //iterate through filteredDays
+  //compare where appointments.id === days.appointments
 
-const getAppointmentsForDay = (state, name) => {
-  const filteredDays = state.days.filter(day => day.name === name);
-  return filteredDays;
+  const foundDay = state.days
+    .filter((day) => day.name === name)[0];
+
+  return foundDay
+    ? foundDay.appointments
+      .map((id) => state.appointments[id])
+    : [];
 }
-
-export default getAppointmentsForDay;
