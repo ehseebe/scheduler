@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import DayList from "./DayList";
 import "components/Application.scss";
+import "components/Appointment";
+import Appointment from "components/Appointment";
 
 const days = [
   {
@@ -28,10 +30,62 @@ const interviewers = [
   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" },
 ];
 
+const appointments = [
+  {
+    id: 1,
+    time: "12pm",
+  },
+  {
+    id: 2,
+    time: "1pm",
+    interview: {
+      student: "Lydia Miller-Jones",
+      interviewer: {
+        id: 1,
+        name: "Sylvia Palmer",
+        avatar: "https://i.imgur.com/LpaY82x.png",
+      }
+    }
+  },
+  {
+    id: 3,
+    time: "2pm",
+    interview: {
+      student: "Louie Tanguay",
+      interviewer: {
+        id: 4,
+        name: "Cohana Roy",
+        avatar: "https://i.imgur.com/FK8V841.jpg",
+      }
+    }
+  },
+  {
+    id: 4,
+    time: "4pm",
+    interview: {
+      student: "Nymphadora Tonks",
+      interviewer: {
+        id: 5,
+        name: "Sven Jones",
+        avatar: "https://i.imgur.com/twYrpay.jpg",
+      }
+    }
+  },
+  {
+    id: 5,
+    time: "3pm"
+  }
+];
+
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
   const [interviewer, setInterviewer] = useState("Sylvia Palmer");
-  
+  //const [appointment, setAppointment] = useState(appointments);
+
+  // const addNewAppointments = (appointment) => {
+  //   setAppointment(prevState => [...prevState, appointment])
+  // }
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -43,7 +97,6 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList
-            // id={props.id}
             days={days}
             day={day}
             setDay={setDay}
@@ -56,7 +109,9 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        {appointments.map(appointment => {         
+          return (<Appointment key={appointment.id} {...appointment}/>)}
+          )}    
       </section>
     </main>
   );
