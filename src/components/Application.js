@@ -3,7 +3,7 @@ import DayList from "./DayList";
 import "components/Application.scss";
 import "components/Appointment";
 import Appointment from "components/Appointment";
-import { getAppointmentsForDay } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 const axios = require("axios").default;
 
 const interviewers1 = [
@@ -94,21 +94,21 @@ export default function Application(props) {
       }
     );
   }, []);
-  
 
-  const appointments = getAppointmentsForDay(state, state.day).map(
-    (appointment) => {
-      return (
-      <Appointment 
-      key={appointment.id}
-      id={appointment.id}
-      time={appointment.time}
-      interview={appointment.interview}
-      interviewer="Sylvia Palmer" 
+  const appointments = getAppointmentsForDay(state, state.day);
+
+  const schedule = appointments.map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
+  
+    return (
+      <Appointment
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
       />
-      );
-    }
-  );
+    );
+  });
 
 
   return (
