@@ -7,7 +7,7 @@ export function getAppointmentsForDay(state, name) {
     ? foundDay.appointments.map((id) => state.appointments[id])
     : [];
 
-  // console.log("OUTPUT", output)
+  // console.log("APPTS FOR DAY", output)
 
   return output;
 }
@@ -30,5 +30,20 @@ export function getInterview(state, interview) {
   
   //console.log("???", output)
   return output
+
+}
+
+export function getInterviewersForDay(state, day) {
+
+  const foundInterviewer = state.days.filter((item) => item.name === day)[0];
+
+  // console.log("FoundInterviewer", foundInterviewer)
+
+  const output = foundInterviewer
+    ? foundInterviewer.interviewers.map((interviewer) => state.interviewers[interviewer])
+    : [];
+
+  // console.log("OUTPUT", output)
+  return output;
 
 }
