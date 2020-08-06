@@ -84,7 +84,7 @@ export default function Application(props) {
       .then(
         (all) => {
           // console.log("DAYS", all[0].data)
-          // console.log("APPTS", all[1].data)
+          console.log("APPTS", all[1].data)
           // console.log("INTERVIEWERS", all[2].data)
           setState((prev) => ({
             ...prev,
@@ -137,7 +137,7 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-      {appointments} 
+      {schedule} 
         <Appointment key='last' time='5pm'/>
       </section>
     </main>
