@@ -20,12 +20,15 @@ export function getInterview(state, interview) {
 
   //needs to return object with id, name, avatar
   const interviewerId = interview.interviewer
-  console.log("!!!!!!", interviewerId)
+  
+  //console.log("!!!!!!", interviewerId)
+  
   const output = {
     student: interview.student,
-    interviewer: state.interviewers
+    interviewer: state.interviewers[interviewerId]
   }
-  console.log("???", output)
+  
+  //console.log("???", output)
   return output
 
 }
