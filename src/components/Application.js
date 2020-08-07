@@ -14,19 +14,8 @@ export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {
-      "1": {
-        id: 1,
-        time: "12pm",
-        interview: null,
-      },
-    },
-    interviewers: {},
-  });
-
-  const [interviewer, setInterviewer] = useState({
-    interviewer: "Sylvia Palmer",
-    interviewers: {},
+    appointments: {},
+    interviewers: {}
   });
 
   const setDay = (day) => setState({ ...state, day });
@@ -37,14 +26,11 @@ export default function Application(props) {
       axios.get("/api/appointments"),
       axios.get("/api/interviewers"),
     ]).then((all) => {
-      // console.log("DAYS", all[0].data)
-      //console.log("APPTS", all[1].data)
-      // console.log("INTERVIEWERS", all[2].data)
       setState((prev) => ({
         ...prev,
         days: all[0].data,
         appointments: all[1].data,
-        interviewers: all[2].data,
+        interviewers: all[2].data
       }));
     });
   }, []);
@@ -52,22 +38,21 @@ export default function Application(props) {
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
-      interview: { ...interview },
+      interview: { ...interview }
     };
 
     const appointments = {
       ...state.appointments,
-      [id]: appointment,
+      [id]: appointment
     };
 
-    return axios.put(`/api/appointments/${id}`, appointment).then((res) => {
+    return axios.put(`/api/appointments/${id}`, appointment)
+    .then((res) => {
       setState(
         {
           ...state,
           appointments,
-        },
-        []
-      );
+        },[]);
     });
   };
 
@@ -76,7 +61,7 @@ export default function Application(props) {
     //keep track of the day of the item to be deleted
     const appointment = {
       ...state.appointments[id],
-      interview: null
+      interview: null,
     };
 
     const appointments = {
@@ -85,8 +70,8 @@ export default function Application(props) {
     };
 
     //declaring days
-    //day state, find day, -- 
-    console.log("???", id)
+    //day state, find day, --
+
     return axios.delete(`/api/appointments/${id}`)
     .then((res) => {
       setState(
@@ -132,7 +117,11 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <ul>
-            <DayList days={state.days} day={state.day} setDay={setDay} />
+            <DayList 
+            days={state.days} 
+            day={state.day} 
+            setDay={setDay} 
+            />
           </ul>
         </nav>
         <img
@@ -143,7 +132,10 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {schedule}
-        <Appointment key="last" time="5pm" />
+        <Appointment 
+        key="last" 
+        time="5pm" 
+        />
       </section>
     </main>
   );
