@@ -71,7 +71,8 @@ const bookInterview = (id, interview) => {
   }
 
 // const cancelInterview = (id, interview) => {
-
+  //cancel appointment
+  
 // }
 
 
