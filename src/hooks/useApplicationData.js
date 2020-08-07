@@ -60,7 +60,15 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment,
     };
-  
+
+    //array
+    const days = [...state.days]
+    //array
+    const today = state.days.find(day => day.appointments.includes(id))
+    console.log("DAYS", days)
+    console.log("TODAY", today)
+
+
     //declaring days
     //day state, find day, --
   
@@ -70,14 +78,14 @@ export default function useApplicationData() {
         {
           ...state,
           appointments,
-          //days
+          days
         },
         []
       );
     });
   };
 
-  return { state, setDay, bookInterview, cancelInterview }
+  return { state, setDay, bookInterview, cancelInterview };
 
 }
 
