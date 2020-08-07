@@ -33,7 +33,7 @@ const Appointment = (props) => {
   }
 
   function deleteInterview() {
-    transition(DELETING, true)
+    transition(DELETING, true);
     
     props.cancelInterview(props.id)
     .then(() => transition(EMPTY));
@@ -56,6 +56,15 @@ const Appointment = (props) => {
           interviewer={props.interview.interviewer}
           onEdit={() => transition(EDIT)}
           onDelete={() => transition(CONFIRM)}
+        />
+      )}
+      {mode === EDIT && (
+        <Form
+          name={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+          interviewers={props.interviewers}
+          onSave={saveInterview}
+          onDelete={() => transition(SHOW)}
         />
       )}
       {mode === SAVING && <Status message='Saving' />}
