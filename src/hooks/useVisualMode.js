@@ -13,8 +13,8 @@ export default function useVisualMode(initial) {
       //if replace is true, we want to remove the last item in the history and replace it with a new one
       newHistory = [
         ...newHistory.slice(0, newHistory.initial.length - 1),
-        mode,
-      ];
+        mode];
+        
     } else {
       newHistory = [...newHistory, mode];
     }
