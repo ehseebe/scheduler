@@ -37,6 +37,10 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
+
+    const days = [...state.days]
+    const today = state.days.find(day => day.appointments.includes(id))
+    today.spots--
   
     return axios.put(`/api/appointments/${id}`, appointment)
     .then((res) => {
@@ -44,6 +48,7 @@ export default function useApplicationData() {
         {
           ...state,
           appointments,
+          days
         });
     });
   };
@@ -60,17 +65,10 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment,
     };
-
-    //array
+  
     const days = [...state.days]
-    //array
     const today = state.days.find(day => day.appointments.includes(id))
-    console.log("DAYS", days)
-    console.log("TODAY", today)
-
-
-    //declaring days
-    //day state, find day, --
+    today.spots++
   
     return axios.delete(`/api/appointments/${id}`)
     .then((res) => {
