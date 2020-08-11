@@ -27,7 +27,7 @@ export default function useApplicationData() {
     });
   }, []);
   
-  const bookInterview = (id, interview) => {
+  const bookInterview = (id, interview, edit=false) => {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -39,8 +39,11 @@ export default function useApplicationData() {
     };
 
     const days = [...state.days];
-    const today = state.days.find(day => day.appointments.includes(id));
-    today.spots--;
+    if (!edit) {
+      const today = state.days.find(day => day.appointments.includes(id));
+      today.spots--;
+    }
+
    
   
     return axios.put(`/api/appointments/${id}`, appointment)

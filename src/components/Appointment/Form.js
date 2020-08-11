@@ -17,13 +17,15 @@ const Form = (props) => {
     props.onCancel();
   };
 
+  const edit = props.edit ? true : false;
+
   const validate = () => {
     if (name === "") {
       setError("Student name cannot be blank");
       return;
     }
     setError("");
-    props.onSave(name, interviewer);
+    props.onSave(name, interviewer, edit);
   };
 
   return (
