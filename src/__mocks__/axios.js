@@ -88,7 +88,7 @@ export default {
       });
     }
 
-    if (url === "/api/appointments") {
+    if (url.startsWith("/api/appointments")) {
       return Promise.resolve({
         status: 204,
         statusText: "No Content",
@@ -110,7 +110,7 @@ export default {
       });
     }
 
-    if (url === "/api/appointments") {
+    if (url.startsWith("/api/appointments")) {
       return Promise.resolve({
         status: 204,
         statusText: "No Content",
@@ -123,5 +123,5 @@ export default {
         statusText: "No Content",
       });
     }
-  }),
+  })
 };
