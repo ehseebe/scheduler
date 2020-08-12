@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const InterviewerList = (props) => {
   InterviewerList.propTypes = {
     value: PropTypes.number,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func
   };
 
   
