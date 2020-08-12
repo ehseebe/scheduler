@@ -27,7 +27,7 @@ describe("Appointment", () => {
     cy.get("[alt='Tori Malcolm']").click();
 
     cy.contains("Save").click();
-    
+
     cy.contains(".appointment__card--show", "Carmen Sandiego");
     cy.contains(".appointment__card--show", "Tori Malcolm");
   });
@@ -40,7 +40,6 @@ describe("Appointment", () => {
     cy.contains("Deleting").should("exist");
     cy.contains("Deleting").should("not.exist");
 
-    cy.contains(".appointment__card--show", "Archie Cohen")
-      .should("not.exist");
+    cy.contains(".appointment__card--show", "Archie Cohen").should("not.exist");
   });
 });
