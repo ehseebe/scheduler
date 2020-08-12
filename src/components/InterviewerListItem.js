@@ -1,17 +1,11 @@
 import React from "react";
 import "components/InterviewerListItem.scss";
-const classNames = require('classnames');
+const classNames = require("classnames");
 
-// const interviewer = {
-//   id: 1,
-//   name: "Sylvia Palmer",
-//   avatar: "https://i.imgur.com/LpaY82x.png",
-// };
-
-const InterviewerListItem = props => {
+const InterviewerListItem = (props) => {
   let interviewerClass = classNames("interviewers__item", {
-    "interviewers__item--selected": props.selected
-  })
+    "interviewers__item--selected": props.selected,
+  });
 
   return (
     <li className={interviewerClass} onClick={props.setInterviewer}>
